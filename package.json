@@ -1,0 +1,56 @@
+{
+  "name": "vscode-features-analyzer",
+  "displayName": "Features Analyzer",
+  "description": "Analyzes feature files and displays specific information.",
+  "version": "0.0.1",
+  "publisher": "azheval",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "repository": {
+		"type": "git",
+		"url": "https://github.com/azheval/vscode-features-analyzer.git"
+	},
+  "categories": [
+        "Other"
+    ],
+  "keywords": [
+		"feature",
+		"features"
+	],
+  "activationEvents": [
+    "onCommand:featuresAnalyzer.createFeaturesList"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "featuresAnalyzer",
+          "name": "Features Analyzer"
+        }
+    ]},
+    "commands": [
+      {
+        "command": "featuresAnalyzer.createFeaturesList",
+        "title": "FeaturesAnalyzer.Create Features List"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Features Analyzer",
+      "properties": {
+        "featuresAnalyzer.featuresFolder": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the features folder",
+          "scope": "resource"
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode": "^1.1.37"
+  }
+}
