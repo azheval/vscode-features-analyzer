@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "publisher": "azheval",
   "license": "MIT",
+  "icon": "images/icon.png",
   "engines": {
     "vscode": "^1.60.0"
   },
