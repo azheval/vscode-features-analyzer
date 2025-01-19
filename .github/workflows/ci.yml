@@ -29,4 +29,4 @@ jobs:
           with:
             args: "publish -p $VSCE_PAT"
         env:
-          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
