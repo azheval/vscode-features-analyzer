@@ -22,8 +22,11 @@ jobs:
         #   env:
         #     VSCE_PAT: ${{ secrets.VSCE_PAT }}
         # - run: vsce publish
-        # - uses: softprops/action-gh-release@v1
-        #   with:
-        #     files: '*.vsix'
-        #     env:
-        #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        - uses: softprops/action-gh-release@v1
+          with:
+            files: '*.vsix'
+            env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        - run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
