@@ -23,6 +23,9 @@ jobs:
         - run: npm install -g @vscode/vsce
         - run: npm run build
         - run: vsce package
+        - run: |
+            FILE_NAME=$(ls *.vsix)
+            echo "VSIX_FILE=$FILE_NAME" >> $GITHUB_ENV
         - uses: actions/upload-artifact@v4
           with:
             name: vsix
@@ -41,9 +44,10 @@ jobs:
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
             tag: ${{ github.ref_name }}
+            VSIX_FILE: ${{ env.VSIX_FILE }}
           run: |
             gh release create "$tag" \
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
               --generate-notes \
-              '*.vsix'
+              "$VSIX_FILE"
