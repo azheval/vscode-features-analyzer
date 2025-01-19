@@ -20,7 +20,7 @@ jobs:
         - run: npm run build
         - run: vsce package
         - name: Create Git tag
-          run: git tag v${{ github.run_number }} git push origin v${{ github.run_number }}
+          run: git tag v${{ github.run_number }} && git push origin v${{ github.run_number }}
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         - name: Upload VSIX to GitHub Releases
