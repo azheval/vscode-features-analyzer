@@ -19,14 +19,14 @@ jobs:
         - run: npm install -g @vscode/vsce
         - run: npm run build
         - run: vsce package
-        #   env:
-        #     VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        # - run: vsce publish
-        - uses: softprops/action-gh-release@v1
+        - name: Upload vsix to release
+          uses: AButler/upload-release-assets@v3.0
           with:
             files: '*.vsix'
-            env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        - run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            repo-token: ${{ secrets.GITHUB_TOKEN }}
+        - uses: lannonbr/vsce-action@master
+          if: github.event.release.prerelease == false
+          with:
+            args: "publish -p $VSCE_PAT"
+        env:
+          VSCE_TOKEN: ${{ secrets.VSCE_PAT }}
