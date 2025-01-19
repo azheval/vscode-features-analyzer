@@ -19,11 +19,11 @@ jobs:
         - run: npm install -g @vscode/vsce
         - run: npm run build
         - run: vsce package
-          env:
-            VSCE_PAT: ${{ secrets.VSCE_PAT }}
-        - run: vsce publish
-        - uses: softprops/action-gh-release@v1
-          with:
-            files: '*.vsix'
-            env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        #   env:
+        #     VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        # - run: vsce publish
+        # - uses: softprops/action-gh-release@v1
+        #   with:
+        #     files: '*.vsix'
+        #     env:
+        #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
