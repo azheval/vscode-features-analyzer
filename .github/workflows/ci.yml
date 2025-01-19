@@ -1,0 +1,28 @@
+name: Build and Publish VSIX
+
+on:
+    push:
+        branches:
+        - main
+
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+        - uses: actions/checkout@v2
+        - uses: actions/setup-node@v2
+          with:
+                node-version: '14'
+        - run: npm install
+        - run: npm run build
+        - run: vsce package
+          env:
+            VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        - run: vsce publish
+        - uses: softprops/action-gh-release@v1
+          with:
+            files: '*.vsix'
+            env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
