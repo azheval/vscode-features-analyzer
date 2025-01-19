@@ -55,5 +55,8 @@
     "vscode": "^1.1.37"
   },
   "dependencies": {
+  },
+  "scripts": {
+    "build": "echo 'No build steps required'"
   }
 }
