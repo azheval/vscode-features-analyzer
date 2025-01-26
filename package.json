@@ -2,7 +2,7 @@
   "name": "vscode-features-analyzer",
   "displayName": "Features Analyzer",
   "description": "Analyzes feature files and displays specific information.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "azheval",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -21,7 +21,8 @@
 		"features"
 	],
   "activationEvents": [
-    "onCommand:featuresAnalyzer.createFeaturesList"
+    "onCommand:featuresAnalyzer.createFeaturesList",
+    "onCommand:featuresAnalyzer.checkIndentation"
   ],
   "main": "./src/extension.js",
   "contributes": {
@@ -36,6 +37,10 @@
       {
         "command": "featuresAnalyzer.createFeaturesList",
         "title": "FeaturesAnalyzer.Create Features List"
+      },
+      {
+        "command": "featuresAnalyzer.checkIndentation",
+        "title": "FeaturesAnalyzer.Check Indentation"
       }
     ],
     "configuration": {
@@ -47,6 +52,11 @@
           "default": "",
           "description": "Path to the features folder",
           "scope": "resource"
+        },
+        "featuresAnalyzer.defaultIndentation": {
+          "type": "string",
+          "default": "",
+          "description": "Default indentation for feature files, possible values are 'space' or 'tab'"
         }
       }
     }
