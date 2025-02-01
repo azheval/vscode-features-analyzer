@@ -1,5 +1,7 @@
 # Features Analyser
 
+![build](https://github.com/azheval/vscode-features-analyzer/actions/workflows/ci.yml/badge.svg)
+
 ## Команды
 
 - FeaturesAnalyzer.Create Features List. Сканирует каталог из `featuresAnalyzer.featuresFolder` и строит таблицу по данным фича-файлов.
