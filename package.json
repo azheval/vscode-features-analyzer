@@ -2,7 +2,7 @@
   "name": "vscode-features-analyzer",
   "displayName": "Features Analyzer",
   "description": "Analyzes feature files and displays specific information.",
-  "version": "0.0.2",
+  "version": "1.0.3",
   "publisher": "azheval",
   "license": "MIT",
   "icon": "images/icon.png",

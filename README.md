@@ -14,7 +14,7 @@
 
 ## Настройка
 
-- featuresAnalyzer.featuresFolder. Каталог для сканирования.
+- featuresAnalyzer.featuresFolder. Относительный путь к каталогу для сканирования.
 - featuresAnalyzer.defaultIndentation. Поддерживаемые варианты значения, кроме незаполненного: `space`, `tab`.
 
 ## Описание

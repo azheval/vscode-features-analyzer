@@ -9,7 +9,7 @@ let defaultIndentation = "";
 function activate(context) {
     const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
     const config = vscode.workspace.getConfiguration('featuresAnalyzer');
-    const scanDirectory = config.get("featuresFolder");
+    const scanDirectory = String(path.join(workspaceFolder, config.get("featuresFolder")));
     defaultIndentation = config.get('defaultIndentation');
 
     if (!scanDirectory) {
