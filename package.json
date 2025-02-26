@@ -2,7 +2,7 @@
   "name": "vscode-features-analyzer",
   "displayName": "Features Analyzer",
   "description": "Analyzes feature files and displays specific information.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "azheval",
   "license": "MIT",
   "icon": "images/icon.png",
@@ -57,6 +57,11 @@
           "type": "string",
           "default": "",
           "description": "Default indentation for feature files, possible values are 'space' or 'tab'"
+        },
+        "featuresAnalyzer.useTagTasks": {
+          "type": "boolean",
+          "default": false,
+          "description": "Use tag tasks for feature files, example @tasks=task1,task2"
         }
       }
     }

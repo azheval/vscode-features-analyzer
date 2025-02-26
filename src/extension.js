@@ -5,12 +5,14 @@ const path = require("path");
 let allFilesInfo = [];
 let panel = null;
 let defaultIndentation = "";
+let useTagTasks = false;
 
 function activate(context) {
     const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
     const config = vscode.workspace.getConfiguration('featuresAnalyzer');
     const scanDirectory = String(path.join(workspaceFolder, config.get("featuresFolder")));
     defaultIndentation = config.get('defaultIndentation');
+    useTagTasks = config.get('useTagTasks');
 
     if (!scanDirectory) {
         vscode.window.showInformationMessage("No features directory selected");
@@ -74,6 +76,7 @@ function analyzeFileForFeaturesList(filePath) {
             exportScenarios: "",
             author: "",
             scenarios: [],
+            tasks: "",
         };
 
         for (let i = 0; i < lines.length; i++) {
@@ -86,6 +89,8 @@ function analyzeFileForFeaturesList(filePath) {
                 fileInfo.exportScenarios = 'V';
             } else if (lowerCaseLine.includes("@author")) {
                 fileInfo.author = line.replace(/^@author=/i, '').trim();
+            } else if (lowerCaseLine.includes("@tasks")) {
+                fileInfo.tasks = line.replace(/^@tasks=/i, '').trim();
             } else if (lowerCaseLine.startsWith("сценарий:") || lowerCaseLine.startsWith("scenario:")) {
                 fileInfo.scenarios.push(line.replace(/^(Сценарий:|Scenario:)/i, '').trim());
             }
@@ -131,6 +136,7 @@ function displayAnalyzeFileForFeaturesList() {
                     <td class="center">${fileInfo.exportScenarios}</td>
                     <td>${fileInfo.author}</td>
                     <td>${scenario}</td>
+                    ${useTagTasks ? `<td>${fileInfo.tasks}</td>` : ""}
                 </tr>`;
         }).join("");
     }).join("");
@@ -158,6 +164,7 @@ function displayAnalyzeFileForFeaturesList() {
                         <th>Export</th>
                         <th>Author</th>
                         <th>Scenario</th>
+                        ${useTagTasks ? `<th>Tasks</th>` : ""}
                     </tr>
                     ${tableRows}
                 </table>
