@@ -43,4 +43,4 @@ jobs:
               --repo="$GITHUB_REPOSITORY" \
               --title="${tag#v}" \
               --generate-notes \
-              'vscode-features-analyzer-1.0.4.vsix'
+              'vscode-features-analyzer-1.0.5.vsix'

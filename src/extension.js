@@ -6,6 +6,7 @@ let allFilesInfo = [];
 let panel = null;
 let defaultIndentation = "";
 let useTagTasks = false;
+let useTagAuthor = false;
 
 function activate(context) {
     const workspaceFolder = vscode.workspace.workspaceFolders[0].uri.fsPath;
@@ -13,6 +14,7 @@ function activate(context) {
     const scanDirectory = String(path.join(workspaceFolder, config.get("featuresFolder")));
     defaultIndentation = config.get('defaultIndentation');
     useTagTasks = config.get('useTagTasks');
+    useTagAuthor = config.get('useTagAuthor');
 
     if (!scanDirectory) {
         vscode.window.showInformationMessage("No features directory selected");
@@ -134,9 +136,9 @@ function displayAnalyzeFileForFeaturesList() {
                     <td>${fileInfo.relativePath}</td>
                     <td>${fileInfo.functionality}</td>
                     <td class="center">${fileInfo.exportScenarios}</td>
-                    <td>${fileInfo.author}</td>
                     <td>${scenario}</td>
                     ${useTagTasks ? `<td>${fileInfo.tasks}</td>` : ""}
+                    ${useTagAuthor ? `<td>${fileInfo.author}</td>` : ""}
                 </tr>`;
         }).join("");
     }).join("");
@@ -162,9 +164,9 @@ function displayAnalyzeFileForFeaturesList() {
                         <th>Path</th>
                         <th>Functionality</th>
                         <th>Export</th>
-                        <th>Author</th>
                         <th>Scenario</th>
                         ${useTagTasks ? `<th>Tasks</th>` : ""}
+                        ${useTagAuthor ? `<th>Author</th>` : ""}
                     </tr>
                     ${tableRows}
                 </table>

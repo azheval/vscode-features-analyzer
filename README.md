@@ -17,6 +17,7 @@
 - featuresAnalyzer.featuresFolder. Относительный путь к каталогу для сканирования.
 - featuresAnalyzer.defaultIndentation. Поддерживаемые варианты значения, кроме незаполненного: `space`, `tab`.
 - featuresAnalyzer.useTagTasks. Управляет видимостью колонки 'Tasks'. В feature файле анализируется строка после тега @tasks=. Пример: @tasks=Задача 1003, Задача 805.
+- featuresAnalyzer.useTagAuthor. Управляет видимостью колонки 'Author'. В feature файле анализируется строка после тега @author=. Пример: @author=John.
 
 ## Описание
 
